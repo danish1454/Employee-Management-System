@@ -6,7 +6,7 @@ import { AuthContext } from './context/AuthProvider';
 
 const App = () => {
   const [user, setUser] = useState(null);
-  const [LoggedInUserData, setLoggedInUserData] = useState(null);
+  const [loggedInUserData, setLoggedInUserData] = useState(null);
   const authData = useContext(AuthContext);
 
   useEffect(() => {
@@ -47,7 +47,9 @@ const App = () => {
     <>
       {!user && <Login handleLogin={handleLogin} />}
       {user === 'admin' && <AdminDashboard changeUser={setUser} />}
-      {user === 'employee' && <EmployeeDashboard changeUser={setUser} data={LoggedInUserData} />}
+      {user === 'employee' && loggedInUserData && (
+        <EmployeeDashboard changeUser={setUser} data={loggedInUserData} />
+      )}
     </>
   );
 };
