@@ -1,78 +1,27 @@
 import React from 'react'
+import AccceptTask from './AcceptTask'
+import NewTask from './NewTask'
+import CompleteTask from './CompleteTask'
+import FailedTask from './FailedTask'
 
-const TaskList = () => {
+const TaskList = ({data}) => {
+  console.log(data)
   return (
     <div id='taskList' className='h-[55%] overflow-x-auto flex items-center justify-start gap-5 flex-nowrap w-full py-5 mt-10'>
-        <div className='flex-shrink-0 h-full w-[300px] p-2 bg-amber-300 rounded-xl'>
-           <div className='flex justify-between items-center'>
-                <h3 className='bg-red-600 text-sm px-3 py-1 rounded'>High</h3>
-                <h4 className='text-sm'>20 Feb 2024</h4>
-           </div>
-           <h2 className='mt-5 text-2xl font-semibold'>Make a youtube video</h2>
-           <p className='text-sm mt-2'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde dolore quae omnis distinctio accusamus deleniti?
-            </p> 
-        </div>
-        <div className='flex-shrink-0 h-full w-[300px] p-2 bg-fuchsia-600 rounded-xl'>
-           <div className='flex justify-between items-center'>
-                <h3 className='bg-red-600 text-sm px-3 py-1 rounded'>High</h3>
-                <h4 className='text-sm'>20 Feb 2024</h4>
-           </div>
-           <h2 className='mt-5 text-2xl font-semibold'>Make a youtube video</h2>
-           <p className='text-sm mt-2'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde dolore quae omnis distinctio accusamus deleniti?
-            </p> 
-        </div>
-        <div className='flex-shrink-0 h-full w-[300px] p-2 bg-teal-900 rounded-xl'>
-           <div className='flex justify-between items-center'>
-                <h3 className='bg-red-600 text-sm px-3 py-1 rounded'>High</h3>
-                <h4 className='text-sm'>20 Feb 2024</h4>
-           </div>
-           <h2 className='mt-5 text-2xl font-semibold'>Make a youtube video</h2>
-           <p className='text-sm mt-2'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde dolore quae omnis distinctio accusamus deleniti?
-            </p> 
-        </div>
-        <div className='flex-shrink-0 h-full w-[300px] p-2 bg-blue-600 rounded-xl'>
-           <div className='flex justify-between items-center'>
-                <h3 className='bg-red-600 text-sm px-3 py-1 rounded'>High</h3>
-                <h4 className='text-sm'>20 Feb 2024</h4>
-           </div>
-           <h2 className='mt-5 text-2xl font-semibold'>Make a youtube video</h2>
-           <p className='text-sm mt-2'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde dolore quae omnis distinctio accusamus deleniti?
-            </p> 
-        </div>
-        <div className='flex-shrink-0 h-full w-[300px] p-2 bg-green-500 rounded-xl'>
-           <div className='flex justify-between items-center'>
-                <h3 className='bg-red-600 text-sm px-3 py-1 rounded'>High</h3>
-                <h4 className='text-sm'>20 Feb 2024</h4>
-           </div>
-           <h2 className='mt-5 text-2xl font-semibold'>Make a youtube video</h2>
-           <p className='text-sm mt-2'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde dolore quae omnis distinctio accusamus deleniti?
-            </p> 
-        </div>
-        <div className='flex-shrink-0 h-full w-[300px] p-2 bg-violet-700 rounded-xl'>
-           <div className='flex justify-between items-center'>
-                <h3 className='bg-red-600 text-sm px-3 py-1 rounded'>High</h3>
-                <h4 className='text-sm'>20 Feb 2024</h4>
-           </div>
-           <h2 className='mt-5 text-2xl font-semibold'>Make a youtube video</h2>
-           <p className='text-sm mt-2'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde dolore quae omnis distinctio accusamus deleniti?
-            </p> 
-        </div>
-        <div className='flex-shrink-0 h-full w-[300px] p-2 bg-orange-700 rounded-xl'>
-           <div className='flex justify-between items-center'>
-                <h3 className='bg-red-600 text-sm px-3 py-1 rounded'>High</h3>
-                <h4 className='text-sm'>20 Feb 2024</h4>
-           </div>
-           <h2 className='mt-5 text-2xl font-semibold'>Make a youtube video</h2>
-           <p className='text-sm mt-2'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde dolore quae omnis distinctio accusamus deleniti?
-            </p> 
-        </div>
+        {data.tasks.map((e, idx)=> {
+          if((e.active)){
+            return <AccceptTask key={idx} data={e}/>
+          }
+          if((e.new)){
+            return <NewTask key={idx} data={e}/>
+          }
+          if((e.completed)){
+            return <CompleteTask key={idx} data={e}/>
+          }
+          if((e.failed)){
+            return <FailedTask key={idx} data={e}/>
+          }
+        })}
     </div>
   )
 }
