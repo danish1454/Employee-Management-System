@@ -5,7 +5,6 @@ import CompleteTask from './CompleteTask'
 import FailedTask from './FailedTask'
 
 const TaskList = ({data}) => {
-  console.log(data)
   return (
     <div id='taskList' className='h-[55%] overflow-x-auto flex items-center justify-start gap-5 flex-nowrap w-full py-5 mt-10'>
         {data.tasks.map((e, idx)=> {
@@ -27,3 +26,4 @@ const TaskList = ({data}) => {
 }
 
 export default TaskList
+//3:31:45
